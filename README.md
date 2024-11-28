@@ -8,7 +8,7 @@ Install Jenkins, configure Docker as agent, set up ci/cd, deploy applications to
 - Go to instances
 - Now, Launch instance
 
-<<IMG>>
+![Uploading Screenshot 2024-11-27 at 11.45.08 AM.png…]()
 
 ### Install Jenkins.
 
