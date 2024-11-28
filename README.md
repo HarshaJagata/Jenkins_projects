@@ -8,7 +8,8 @@ Install Jenkins, configure Docker as agent, set up ci/cd, deploy applications to
 - Go to instances
 - Now, Launch instance
 
-![Uploading Screenshot 2024-11-27 at 11.45.08 AM.png…]()
+
+<img width="1117" alt="111" src="https://github.com/user-attachments/assets/eaf57a90-67da-4890-9810-c4a1687b0ed6">
 
 ### Install Jenkins.
 
@@ -47,7 +48,7 @@ sudo apt-get install jenkins
 
 - Added inbound traffic rules as shown in the image (In my case, I allowed `All traffic`).
 
-<<IMG>>
+<img width="859" alt="22" src="https://github.com/user-attachments/assets/7019201f-9a96-4b48-b5e8-661da32b829a">
 
 ### Logged into Jenkins using the  URL:
 
@@ -57,7 +58,69 @@ After, login to Jenkins,
       - Run the command to copy the Jenkins Admin Password - `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
       - Enter the Administrator password
 
-<<IMG>>
+<img width="764" alt="3" src="https://github.com/user-attachments/assets/50919cf9-670b-479a-abfb-78c882a2577e">
+
+### Click on Install suggested plugins
+
+<img width="624" alt="4" src="https://github.com/user-attachments/assets/500125a6-f5aa-438a-bdbe-5cdf249a0f98">
+
+Wait for the Jenkins to Install suggested plugins
+
+
+<img width="746" alt="Screenshot 2024-11-28 at 1 01 05 PM" src="https://github.com/user-attachments/assets/a99699c5-34de-421f-9648-8abfe585f13f">
+
+
+Create First Admin User.
+
+<img width="771" alt="Untitled" src="https://github.com/user-attachments/assets/97640177-ce33-44b8-b36b-8b3a56d7ec58">
+
+
+Jenkins Installation is Successful. 
+
+<img width="351" alt="5" src="https://github.com/user-attachments/assets/42fa0062-39cc-4410-9422-9a9bf26f1524">
+
+
+<img width="1117" alt="1" src="https://github.com/user-attachments/assets/071cd7cd-0a29-47e3-8c5c-1c8708615ac0">
+
+## Install the Docker Pipeline plugin in Jenkins:
+
+   - Log in to Jenkins.
+   - Go to Manage Jenkins > Manage Plugins.
+   - In the Available tab, search for "Docker Pipeline".
+   - Select the plugin and click the Install button.
+   - Restart Jenkins after the plugin is installed.
+   
+<img width="1121" alt="2" src="https://github.com/user-attachments/assets/2fde4555-3202-440b-a800-0ac7d4476e85">
+
+
+Wait for the Jenkins to be restarted.
+
+
+## Docker Slave Configuration
+
+Run the below command to Install Docker
+
+```
+sudo apt update
+sudo apt install docker.io
+```
+ 
+### Grant Jenkins user and Ubuntu user permission to docker deamon.
+
+```
+sudo su - 
+usermod -aG docker jenkins
+usermod -aG docker ubuntu
+systemctl restart docker
+```
+
+Once you are done with the above steps, it is better to restart Jenkins.
+
+```
+http://<ec2-instance-public-ip>:8080/restart
+```
+
+The docker agent configuration is now successful.
 
 
 
